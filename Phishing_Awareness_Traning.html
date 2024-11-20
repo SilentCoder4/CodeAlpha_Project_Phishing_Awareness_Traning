@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing_Awareness_Traning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000033;          /*background */
+            color: #fff;                        /* White text color for visibility */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .viewer {
+            text-align: center;
+        }
+        .viewer img {
+            max-width: 90%;
+            max-height: 70vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2);        /* adding shadow */
+            transition: opacity 0.5s ease, box-shadow 0.5s ease;
+        }
+        .viewer img:hover {
+            box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);       /* adding a shadow on hover */
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls button {
+            background-color: #444;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .controls button:hover {
+            background-color: #666;
+        }
+        .message {
+            margin-top: 15px;
+            color: #aaa;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewer">
+        <!-- Adding my slide paths -->
+        <img id="slideImage" src="slide/Slide1.jpg" alt="Slide Image">
+        <div class="controls">
+            <button onclick="prevImage()">Previous</button>
+            <button onclick="nextImage()">Next</button>
+        </div>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        const images = [
+            "slide/Slide1.jpg", // slides added
+            "slide/Slide2.jpg",
+            "slide/Slide3.jpg",
+            "slide/Slide4.jpg",
+            "slide/Slide5.jpg",
+			"slide/Slide6.jpg",
+            "slide/Slide7.jpg",
+            "slide/Slide8.jpg",
+            "slide/Slide9.jpg",
+			"slide/Slide10.jpg",
+            "slide/Slide11.jpg",
+			"slide/Slide12.jpg"
+        ];
+        let currentIndex = 0;
+
+        const slideImage = document.getElementById('slideImage');
+        const message = document.getElementById('message');
+
+        function updateImage() {
+            slideImage.style.opacity = 0; 
+            setTimeout(() => {
+                slideImage.src = images[currentIndex];
+                slideImage.style.opacity = 1;
+                updateMessage();
+            }, 300);
+        }
+
+        function nextImage() {
+            if (currentIndex < images.length - 1) {
+                currentIndex++;
+                updateImage();
+            } else {
+                updateMessage();
+            }
+        }
+
+        function prevImage() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateImage();
+            } else {
+                updateMessage();
+            }
+        }
+
+        function updateMessage() {
+            if (currentIndex === images.length - 1) {
+                message.textContent = "End of Slide";
+            } else if (currentIndex === 0) {
+                message.textContent = "Start of Slide";
+            } else {
+                message.textContent = "";
+            }
+        }
+
+            // Add event listener for arrow keys
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                nextImage();                        // Right arrow key for next image
+            } else if (event.key === 'ArrowLeft') {
+                prevImage();                        // Left arrow key for previous image
+            }
+        });
+
+
+        updateMessage();
+    </script>
+</body>
+</html>
