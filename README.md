@@ -42,4 +42,4 @@ Slide 11:
 Slide 12:
 ![Slide12](https://github.com/user-attachments/assets/c889cfd9-0d54-4788-9f01-af58e94674fa)
 
-
+I added these Image into html code "Phishing_Awareness_Traning.html"
